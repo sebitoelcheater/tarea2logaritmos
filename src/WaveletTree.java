@@ -21,7 +21,7 @@ public class WaveletTree {
     }
 
     public int rankSymbol(WaveletTree root, Character c, String sequence, int index) {
-        
+
     }
 
     // Getters and setters
