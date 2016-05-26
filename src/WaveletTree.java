@@ -1,14 +1,14 @@
 /**
  * Created by jorge on 21-05-16.
  */
-public class WaveletTree {
+public class WaveletTree implements WaveletNode {
 
     // Bit map for this tree's root
     private int[] bitMap;
 
     // Child references
-    private WaveletTree leftChild;
-    private WaveletTree rightChild;
+    private WaveletNode leftChild;
+    private WaveletNode rightChild;
 
     // Rank function
     public int rank(int b, int[] bitMap, int index) {
@@ -34,11 +34,11 @@ public class WaveletTree {
         this.bitMap = bitmap;
     }
 
-    public WaveletTree getLeftChild() {
+    public WaveletNode getLeftChild() {
         return this.leftChild;
     }
 
-    public WaveletTree getRightChild() {
+    public WaveletNode getRightChild() {
         return this.rightChild;
     }
 
