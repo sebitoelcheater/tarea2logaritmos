@@ -4,6 +4,8 @@
 public class Main {
     public static void main(String[] args) {
         InstanceCreator instanceCreator = new InstanceCreator();
-        System.out.print(instanceCreator.alphabetToString(8));
+        String instance = instanceCreator.generateInstance(8);
+
+        //System.out.println(instance);
     }
 }

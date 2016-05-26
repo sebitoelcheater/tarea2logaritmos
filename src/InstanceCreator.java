@@ -38,20 +38,18 @@ public class InstanceCreator {
 
     public String generateInstance(int exp) {
         int step = n / alphabetSize[exp - 1];
-        String instance = "";
-
         Random random = new Random();
 
+        StringBuilder stringBuilder = new StringBuilder();
         for (int i = 0; i < n; i++) {
             if (i % step == 0) {
-                instance = instance + alphabet[exp - 1][i / alphabetSize[exp - 1]];
-                // revisar esto
+                stringBuilder.append(alphabet[exp - 1][i / step]);
             }
             else {
-                instance = instance + alphabet[exp - 1][random.nextInt(alphabetSize[exp - 1])];
+                stringBuilder.append(alphabet[exp - 1][random.nextInt(alphabetSize[exp - 1])]);
             }
         }
-
+        String instance = stringBuilder.toString();
         return instance;
     }
 }
