@@ -9,6 +9,8 @@ public class WaveletTree implements WaveletNode {
     // Bit map for this tree's root
     private int[] bitmap;
 
+    private char[] alphabet;
+
     // Child references
     private WaveletNode leftChild;
     private WaveletNode rightChild;
@@ -27,7 +29,12 @@ public class WaveletTree implements WaveletNode {
     }
 
     public int rank(char b, int index) {
+        int tag = getTag(alphabet, b);
+        if(tag == 0){
+            return leftChild.rank(0, );
+        }
         int counter = 0;
+
         for (int i = 0; i <= index; i++) {
             if (bitmap[i] == b)
                 counter++;
@@ -58,6 +65,14 @@ public class WaveletTree implements WaveletNode {
 
     public void setRightChild(WaveletNode rightChild) {
         this.rightChild = rightChild;
+    }
+
+    public char[] getAlphabet() {
+        return alphabet;
+    }
+
+    public void setAlphabet(char[] alphabet) {
+        this.alphabet = alphabet;
     }
 
     public static WaveletNode toWaveletTree(String s){
