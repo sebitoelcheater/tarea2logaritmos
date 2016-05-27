@@ -3,4 +3,7 @@
  */
 public interface WaveletNode {
     public int rank(int b, int[] bitMap, int index);
+
+
+
 }
