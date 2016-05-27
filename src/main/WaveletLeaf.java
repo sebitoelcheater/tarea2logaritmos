@@ -1,3 +1,5 @@
+package main;
+
 /**
  * Created by sebito on 26-05-16.
  */
@@ -5,7 +7,7 @@ public class WaveletLeaf implements WaveletNode {
 
     private char symbol;
 
-    private int lenght;
+    private int length;
 
     public void setSymbol(char symbol){
         this.symbol = symbol;
@@ -15,17 +17,17 @@ public class WaveletLeaf implements WaveletNode {
         return symbol;
     }
 
-    public int getLenght() {
-        return lenght;
+    public int getLength() {
+        return length;
     }
 
-    public void setLenght(int lenght) {
-        this.lenght = lenght;
+    public void setLength(int lenght) {
+        this.length = lenght;
     }
 
     @Override
     public int rank(int i, int index) {
-        return Math.min(index+1, lenght);
+        return Math.min(index+1, length);
     }
 
     @Override
