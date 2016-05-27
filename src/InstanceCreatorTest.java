@@ -9,32 +9,38 @@ import static org.junit.Assert.*;
 public class InstanceCreatorTest {
 
     InstanceCreator instanceCreator;
-    String instance_2;
-    String instance_4;
-    String instance_8;
-    String instance_16;
-    String instance_32;
-    String instance_64;
-    String instance_128;
-    String instance_256;
+    String[] instances = new String[8];
 
     @Before
     public void setUp() throws Exception {
         instanceCreator = new InstanceCreator();
-        instance_2 = instanceCreator.generateInstance(1);
-        instance_4 = instanceCreator.generateInstance(2);
-        instance_8 = instanceCreator.generateInstance(3);
-        instance_16 = instanceCreator.generateInstance(4);
-        instance_32 = instanceCreator.generateInstance(5);
-        instance_64 = instanceCreator.generateInstance(6);
-        instance_128 = instanceCreator.generateInstance(7);
-        instance_256 = instanceCreator.generateInstance(8);
+        instances[0] = instanceCreator.generateInstance(1);
+        instances[1] = instanceCreator.generateInstance(2);
+        instances[2] = instanceCreator.generateInstance(3);
+        instances[3] = instanceCreator.generateInstance(4);
+        instances[4] = instanceCreator.generateInstance(5);
+        instances[5] = instanceCreator.generateInstance(6);
+        instances[6] = instanceCreator.generateInstance(7);
+        instances[7] = instanceCreator.generateInstance(8);
     }
 
     @Test
-    public void testGetAlphabet() {
-        //assertTrue(instanceCreator.getAlphabet()[0].equals("Ĭĭ"));
-        //assertTrue(instanceCreator.getAlphabet()[3].equals("ĬĭĮįİıĲĳĴĵĶķĸĹĺĻ"));
-        //assertTrue(instanceCreator.getAlphabet()[7].equals("ĬĭĮįİıĲĳĴĵĶķĸĹĺĻļĽľĿŀŁłŃńŅņŇňŉŊŋŌōŎŏŐőŒœŔŕŖŗŘřŚśŜŝŞşŠšŢţŤťŦŧŨũŪūŬŭŮůŰűŲųŴŵŶŷŸŹźŻżŽžſƀƁƂƃƄƅƆƇƈƉƊƋƌƍƎƏƐƑƒƓƔƕƖƗƘƙƚƛƜƝƞƟƠơƢƣƤƥƦƧƨƩƪƫƬƭƮƯưƱƲƳƴƵƶƷƸƹƺƻƼƽƾƿǀǁǂǃǄǅǆǇǈǉǊǋǌǍǎǏǐǑǒǓǔǕǖǗǘǙǚǛǜǝǞǟǠǡǢǣǤǥǦǧǨǩǪǫǬǭǮǯǰǱǲǳǴǵǶǷǸǹǺǻǼǽǾǿȀȁȂȃȄȅȆȇȈȉȊȋȌȍȎȏȐȑȒȓȔȕȖȗȘșȚțȜȝȞȟȠȡȢȣȤȥȦȧȨȩȪȫ"));
+    public void testAlphabetToString() {
+        assertTrue(instanceCreator.alphabetToString(1).equals("Ĭĭ"));
+        assertTrue(instanceCreator.alphabetToString(4).equals("ĬĭĮįİıĲĳĴĵĶķĸĹĺĻ"));
+        assertTrue(instanceCreator.alphabetToString(8).equals("ĬĭĮįİıĲĳĴĵĶķĸĹĺĻļĽľĿŀŁłŃńŅņŇňŉŊŋŌōŎŏŐőŒœŔŕŖŗŘřŚśŜŝŞşŠšŢţŤťŦŧŨũŪūŬŭŮůŰűŲųŴŵŶŷŸŹźŻżŽžſƀƁƂƃƄƅƆƇƈƉƊƋƌƍƎƏƐƑƒƓƔƕƖƗƘƙƚƛƜƝƞƟƠơƢƣƤƥƦƧƨƩƪƫƬƭƮƯưƱƲƳƴƵƶƷƸƹƺƻƼƽƾƿǀǁǂǃǄǅǆǇǈǉǊǋǌǍǎǏǐǑǒǓǔǕǖǗǘǙǚǛǜǝǞǟǠǡǢǣǤǥǦǧǨǩǪǫǬǭǮǯǰǱǲǳǴǵǶǷǸǹǺǻǼǽǾǿȀȁȂȃȄȅȆȇȈȉȊȋȌȍȎȏȐȑȒȓȔȕȖȗȘșȚțȜȝȞȟȠȡȢȣȤȥȦȧȨȩȪȫ"));
+    }
+
+    @Test
+    public void testGenerateInstance() {
+        for (int i = 0; i < 8; i++) {
+            StringBuilder alphabet = new StringBuilder((int) Math.pow(2, i + 1));
+            for (int j = 0; j < instances[i].length(); j++) {
+                char c = instances[i].charAt(j);
+                if (alphabet.indexOf(String.valueOf(c)) == -1)
+                    alphabet.append(c);
+            }
+            assertFalse(alphabet.length() != (int) Math.pow(2, i + 1));
+        }
     }
 }

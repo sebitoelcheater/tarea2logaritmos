@@ -2,6 +2,7 @@
  * Created by sebito on 26-05-16.
  */
 public class MyUtils {
+    
      public static char[] getCharacters(String input){
          boolean[] isItThere = new boolean[Character.MAX_VALUE];
          for (int i = 0; i < input.length(); i++) {

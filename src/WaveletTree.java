@@ -66,7 +66,7 @@ public class WaveletTree implements WaveletNode {
         if(chars.length == 1) {
             WaveletLeaf waveletLeaf = new WaveletLeaf();
             waveletLeaf.setSymbol(chars[0]);
-            waveletLeaf.setLenght(s.length());
+            waveletLeaf.setLength(s.length());
             return waveletLeaf;
         } else if(chars.length > 1) {
             WaveletTree waveletTree = new WaveletTree();
