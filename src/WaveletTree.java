@@ -14,23 +14,25 @@ public class WaveletTree implements WaveletNode {
     private WaveletNode rightChild;
 
     // Constructor
-    private WaveletTree(){
-
-    }
+    private WaveletTree(){}
 
     // Rank function
-    public int rank(int b, int[] bitMap, int index) {
+    public int rank(int b, int index) {
         int counter = 0;
         for (int i = 0; i <= index; i++) {
-            if (bitMap[i] == b)
+            if (bitmap[i] == b)
                 counter++;
         }
         return counter;
     }
 
-    public int rankSymbol(WaveletTree root, Character c, String sequence, int index) {
-        //
-        return 0;
+    public int rank(char b, int index) {
+        int counter = 0;
+        for (int i = 0; i <= index; i++) {
+            if (bitmap[i] == b)
+                counter++;
+        }
+        return counter;
     }
 
     // Getters and setters
@@ -64,6 +66,7 @@ public class WaveletTree implements WaveletNode {
         if(chars.length == 1) {
             WaveletLeaf waveletLeaf = new WaveletLeaf();
             waveletLeaf.setSymbol(chars[0]);
+            waveletLeaf.setLenght(s.length());
             return waveletLeaf;
         } else if(chars.length > 1) {
             WaveletTree waveletTree = new WaveletTree();
@@ -101,5 +104,11 @@ public class WaveletTree implements WaveletNode {
         else
             return 1;
     }
+
+//    public char sub(int index){
+//        if(this.bitmap[index] == 0){
+//
+//        }
+//    }
 
 }

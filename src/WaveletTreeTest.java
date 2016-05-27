@@ -17,6 +17,28 @@ public class WaveletTreeTest {
 
     @Test
     public void rank() throws Exception {
+        // int 0 and 1
+        WaveletTree waveletTree = (WaveletTree) WaveletTree.toWaveletTree("somos");
+
+        assertEquals(0, waveletTree.rank(0, 0));
+        assertEquals(1, waveletTree.rank(0, 1));
+        assertEquals(2, waveletTree.rank(0, 2));
+        assertEquals(3, waveletTree.rank(0, 3));
+        assertEquals(3, waveletTree.rank(0, 4));
+
+        assertEquals(1, waveletTree.rank(1, 0));
+        assertEquals(1, waveletTree.rank(1, 1));
+        assertEquals(1, waveletTree.rank(1, 2));
+        assertEquals(1, waveletTree.rank(1, 3));
+        assertEquals(2, waveletTree.rank(1, 4));
+
+        assertEquals(0, waveletTree.getLeftChild().rank(0, 0));
+        assertEquals(1, waveletTree.getLeftChild().rank(0, 1));
+        assertEquals(1, waveletTree.getLeftChild().rank(0, 2));
+
+        assertEquals(1, waveletTree.getLeftChild().rank(1, 0));
+        assertEquals(1, waveletTree.getLeftChild().rank(1, 1));
+        assertEquals(2, waveletTree.getLeftChild().rank(1, 2));
 
     }
 
@@ -60,11 +82,6 @@ public class WaveletTreeTest {
 
         int[] expectedBitmap1 = {1,0,1};
         assertArrayEquals(expectedBitmap1, ((WaveletTree) waveletTree.getLeftChild()).getBitmap());
-    }
-
-    @Test
-    public void rankSymbol() throws Exception {
-
     }
 
 }
