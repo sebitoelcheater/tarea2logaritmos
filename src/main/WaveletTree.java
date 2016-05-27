@@ -38,6 +38,27 @@ public class WaveletTree implements WaveletNode {
             return rightChild.rank(b, rank-1);
     }
 
+    /*
+Finalmente queremos implementar la operación range[x,y](S, i, j), que cuenta la cantidad de elementos con valores entre x e y entre las posiciones i y j. Para ellos, usaremos la siguiente estrategia recursiva
+1. Si [x, y] es disjunto al subrango que representa vraíz, entonces la respuesta es 0.
+2. Si [x, y] contiene al subrango que representa vraíz, entonces la respuesta es j − i + 1.
+3. Si [x,y] intersecta pero no contiene al subrango representado por vraíz, entonces la respuesta es la suma de las consultas a ambos hijos.
+*/
+    // Range function
+    public int range(char x, char y, int i, int j) {
+        int indexX = this.alphabet.toString().indexOf(x);
+        int indexY = this.alphabet.toString().lastIndexOf(y);
+
+        if ((i > j)) {
+            return 0;
+        }
+        else if () {
+            return j - i + 1;
+        }
+        else { }
+    }
+
+
     // Getters and setters
     public int[] getBitmap() {
         return this.bitmap;
