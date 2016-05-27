@@ -31,16 +31,11 @@ public class WaveletTree implements WaveletNode {
 
     public int rank(char b, int index) {
         int tag = getTag(alphabet, b);
-        if(tag == 0){
-            return leftChild.rank(0, );
-        }
-        int counter = 0;
-
-        for (int i = 0; i <= index; i++) {
-            if (bitmap[i] == b)
-                counter++;
-        }
-        return counter;
+        int rank = rank(tag, index);
+        if(tag == 0)
+            return leftChild.rank(b, rank-1);
+        else
+            return rightChild.rank(b, rank-1);
     }
 
     // Getters and setters
@@ -104,6 +99,7 @@ public class WaveletTree implements WaveletNode {
             }
 
             waveletTree.bitmap = new int[bitmap.size()];
+            waveletTree.alphabet = chars;
             for(int i = 0; i < bitmap.size(); i++) waveletTree.bitmap[i] = bitmap.get(i);
             waveletTree.setLeftChild(toWaveletTree(sbLeft.toString()));
             waveletTree.setRightChild(toWaveletTree(sbRight.toString()));

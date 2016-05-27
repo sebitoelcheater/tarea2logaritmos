@@ -45,6 +45,25 @@ public class WaveletTreeTest {
         Assert.assertEquals(1, waveletTree.getLeftChild().rank(1, 1));
         Assert.assertEquals(2, waveletTree.getLeftChild().rank(1, 2));
 
+        // char
+        Assert.assertEquals(0, waveletTree.rank('m', 0));
+        Assert.assertEquals(0, waveletTree.rank('m', 1));
+        Assert.assertEquals(1, waveletTree.rank('m', 2));
+        Assert.assertEquals(1, waveletTree.rank('m', 3));
+        Assert.assertEquals(1, waveletTree.rank('m', 4));
+
+        Assert.assertEquals(0, waveletTree.rank('o', 0));
+        Assert.assertEquals(1, waveletTree.rank('o', 1));
+        Assert.assertEquals(1, waveletTree.rank('o', 2));
+        Assert.assertEquals(2, waveletTree.rank('o', 3));
+        Assert.assertEquals(2, waveletTree.rank('o', 4));
+
+        Assert.assertEquals(1, waveletTree.rank('s', 0));
+        Assert.assertEquals(1, waveletTree.rank('s', 1));
+        Assert.assertEquals(1, waveletTree.rank('s', 2));
+        Assert.assertEquals(1, waveletTree.rank('s', 3));
+        Assert.assertEquals(2, waveletTree.rank('s', 4));
+
     }
 
     @Test

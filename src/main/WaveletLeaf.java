@@ -32,6 +32,9 @@ public class WaveletLeaf implements WaveletNode {
 
     @Override
     public int rank(char c, int index) {
-        return 0;
+        if(symbol == c)
+            return Math.min(index+1, length);
+        else
+            return 0;
     }
 }

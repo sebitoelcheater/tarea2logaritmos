@@ -1,5 +1,6 @@
 package tests;
 
+import main.InstanceCreator;
 import org.junit.Before;
 import org.junit.Test;
 
