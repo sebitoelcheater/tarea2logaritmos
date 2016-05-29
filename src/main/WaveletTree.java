@@ -1,6 +1,7 @@
 package main;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 
 /**
  * Created by jorge on 21-05-16.
@@ -22,6 +23,7 @@ public class WaveletTree implements WaveletNode {
     // Rank function
     public int rank(int b, int index) {
         int counter = 0;
+        index = Math.min(bitmap.length-1, index);
         for (int i = 0; i <= index; i++) {
             if (bitmap[i] == b)
                 counter++;
@@ -46,16 +48,22 @@ Finalmente queremos implementar la operación range[x,y](S, i, j), que cuenta la
 */
     // Range function
     public int range(char x, char y, int i, int j) {
-        int indexX = this.alphabet.toString().indexOf(x);
-        int indexY = this.alphabet.toString().lastIndexOf(y);
-
-        if ((i > j)) {
+        // exception handling
+        j = Math.min(j, bitmap.length);
+        if(y < x || j <= i || i >= bitmap.length || y < alphabet[0] || x > alphabet[alphabet.length-1])
             return 0;
-        }
-        else if () {
-            return j - i + 1;
-        }
-        else { }
+        else if (x <= alphabet[0] && y >= alphabet[alphabet.length-1])
+            return j - i;
+        else if (x <= alphabet[0] && y < alphabet[alphabet.length-1] || x > alphabet[0] || y >= alphabet[alphabet.length-1]) {
+            if (j == bitmap.length)
+                return getLeftChild().range(x, y, rank(0, i)-1, rank(0, j)) + getRightChild().range(x, y, rank(1, i)-1, rank(1, j));
+            else {
+                int izq = getLeftChild().range(x, y, rank(0, i)-1, rank(0, j)-1);
+                int der = getRightChild().range(x, y, rank(1, i) - 1, rank(1, j) - 1);
+                return getLeftChild().range(x, y, rank(0, i) - 1, rank(0, j) - 1) + getRightChild().range(x, y, rank(1, i) - 1, rank(1, j) - 1);
+            }
+        } else
+            return 0;
     }
 
 

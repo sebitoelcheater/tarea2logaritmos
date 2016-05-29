@@ -37,4 +37,12 @@ public class WaveletLeaf implements WaveletNode {
         else
             return 0;
     }
+
+    @Override
+    public int range(char x, char y, int i, int j) {
+        if(x <= symbol && y >= symbol)
+            return Math.min(length, j-i);
+        else
+            return 0;
+    }
 }

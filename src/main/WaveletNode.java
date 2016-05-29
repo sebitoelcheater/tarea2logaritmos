@@ -9,4 +9,6 @@ public interface WaveletNode {
 
     int rank(char c, int index);
 
+    int range(char x, char y, int i, int j);
 }
+

@@ -108,4 +108,22 @@ public class WaveletTreeTest {
         Assert.assertArrayEquals(expectedBitmap1, ((WaveletTree) waveletTree.getLeftChild()).getBitmap());
     }
 
+    @Test
+    public void range() throws Exception{
+        WaveletTree waveletTree1 = (WaveletTree) WaveletTree.toWaveletTree("somos o no somos");
+
+        assertEquals(13, waveletTree1.range('a', 'z', 0, 16));
+        assertEquals(7, waveletTree1.range('n', 'o', 0, 16));
+        assertEquals(7, waveletTree1.range('n', 'o', 0, 16));
+        assertEquals(6, waveletTree1.range('a', 'z', 3, 12));
+        assertEquals(4, waveletTree1.range('n', 'o', 3, 12));
+
+        WaveletTree waveletTree2 = (WaveletTree) WaveletTree.toWaveletTree("111121111211112111121111211112111121111");
+        assertEquals(1, waveletTree2.range('2', '2', 4, 10));
+        assertEquals(1, waveletTree2.range('2', '2', 9, 15));
+        assertEquals(1, waveletTree2.range('2', '2', 14, 20));
+        assertEquals(3, waveletTree2.range('2', '2', 4, 20));
+
+    }
+
 }
