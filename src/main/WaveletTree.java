@@ -58,8 +58,6 @@ Finalmente queremos implementar la operación range[x,y](S, i, j), que cuenta la
             if (j == bitmap.length)
                 return getLeftChild().range(x, y, rank(0, i)-1, rank(0, j)) + getRightChild().range(x, y, rank(1, i)-1, rank(1, j));
             else {
-                int izq = getLeftChild().range(x, y, rank(0, i)-1, rank(0, j)-1);
-                int der = getRightChild().range(x, y, rank(1, i) - 1, rank(1, j) - 1);
                 return getLeftChild().range(x, y, rank(0, i) - 1, rank(0, j) - 1) + getRightChild().range(x, y, rank(1, i) - 1, rank(1, j) - 1);
             }
         } else
